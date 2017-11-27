@@ -1,0 +1,57 @@
+HTML, BODY, DIV, input {
+  box-sizing: border-box; 
+}
+
+.emoji-picker {
+  display: flex;
+  flex-direction: column;
+  width: 325px;
+  height: 250px;
+  background: black;
+  padding: 5px;
+}
+
+.emoji-categories {
+  display: flex;
+  justify-content: space-around;
+  height: 47px;
+  padding-bottom: 5px;
+}
+
+.emoji-category, .emoji-search {
+  font-size: 18px;
+  text-align: center;
+  background: black;
+  border: none;
+}
+
+BUTTON.emoji-category {
+  color: whitesmoke;
+}
+
+INPUT.emoji-search {
+  font-size: 85%;
+  padding: 5px;
+  border-bottom: black solid 1px;
+  background: white;
+  width: 100%;
+}
+
+.emoji-list {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  display: flex;
+  flex-wrap: wrap;
+  background: whitesmoke;
+}
+
+.emojis-loading {
+  margin: auto;
+}
+
+.emoji {
+  width: 12.5%;
+  padding: 3px 5px;
+  text-align: center;
+}
