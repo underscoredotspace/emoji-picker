@@ -23,7 +23,8 @@ HTML, BODY, DIV, input {
   font-size: 14px;
   text-align: center;
   background: black;
-  border: 1px black solid;
+  border: none;
+  border-bottom: 1px black solid;
 }
 
 .emoji-category.all {
@@ -35,6 +36,7 @@ BUTTON.emoji-category {
 }
 
 BUTTON.emoji-category.selected {
+  background: #333;
   border: 1px whitesmoke solid;
 }
 

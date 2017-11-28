@@ -47,11 +47,29 @@ class EmojiPicker extends React.Component {
   }
 
   render() {
-    const {error, isLoaded, emojis, emojiCategory, filterText} = this.state;
+    const {error, isLoaded, emojis, emojiCategory, filterText} = this.state
+    
     if (error) {
-      return <div>Error: {error.message}</div>
+      console.error(error.message)
+      return (
+        <div className='emoji-picker'>
+          <div className='emoji-categories'>
+            <button className='emoji-category'>🙃</button>
+          </div>
+          <div className='emoji-list'>
+            <div className='emojis-nomatch'>Error</div>
+          </div>
+        </div>
+      )
     } else if (!isLoaded) {
-      return <div>Loading...</div>
+      return (
+        <div className='emoji-picker'>
+          <div className='emoji-categories'></div>
+          <div className='emoji-list'>
+            <div className='emojis-nomatch'>Loading...</div>
+          </div>
+        </div>
+      )
     } else {
       return (
         <div className='emoji-picker'>
