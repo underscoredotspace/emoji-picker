@@ -55,7 +55,7 @@ class EmojiPicker extends React.Component {
     } else {
       return (
         <div className='emoji-picker'>
-          <EmojiTypes onCategoryChange={this.handleCategoryChange} />
+          <EmojiTypes onCategoryChange={this.handleCategoryChange} emojiCategory={emojiCategory} />
           <EmojiSearch onFilterTextChange={this.handleFilterTextChange} filterText={filterText}/>
           <EmojiList emojiCategory={emojiCategory} filterText={filterText} emojis={emojis} />
         </div>
@@ -85,14 +85,19 @@ class EmojiTypes extends React.Component {
   }
 
   render() {
+    const emojiCategory = this.props.emojiCategory
+
     return (
       <div className='emoji-categories emoji-section'>
-        <button className='emoji-category' onClick={e=>this.handleCategoryChange(e)}>x</button>
-        {this.emojiTypes.map(emojiType => (
-          <button className='emoji-category' onClick={e=>this.handleCategoryChange(e,emojiType.category)} key={emojiType.category}>
+        <button className='emoji-category all' onClick={e=>this.handleCategoryChange(e)}>&#11089;</button>
+        {this.emojiTypes.map(emojiType => {
+          let selected = ''
+          if (emojiType.category === emojiCategory) selected = ' selected'
+          return (<button className={'emoji-category'+selected} onClick={e=>this.handleCategoryChange(e,emojiType.category)} key={emojiType.category}>
             {emojiType.emoji}
-          </button>
-        ))}
+          </button>)
+        }
+        )}
       </div>
     )
   }
@@ -112,7 +117,7 @@ class EmojiSearch extends React.Component {
     return (
       <input
         className='emoji-search'
-        type='text'
+        type="search"
         placeholder='Search'
         value={this.props.filterText}
         onChange={this.handleFilterTextChange}
@@ -143,7 +148,9 @@ class EmojiList extends React.Component {
       </div>)
     })
 
-    if (!matches) emojisFiltered = 'No matches'
+    if (!matches) {
+      emojisFiltered = <div className='emojis-nomatch'>No matches</div>
+    }
 
     return (
       <div className='emoji-list'>

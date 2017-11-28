@@ -5,17 +5,18 @@ HTML, BODY, DIV, input {
 .emoji-picker {
   display: flex;
   flex-direction: column;
-  width: 325px;
+  width: 350px;
   height: 250px;
   background: black;
   padding: 5px;
+  font-family: sans-serif;
 }
 
 .emoji-categories {
   display: flex;
   justify-content: space-around;
   height: 47px;
-  padding-bottom: 5px;
+  padding-bottom: 4px;
 }
 
 .emoji-category, .emoji-search {
@@ -25,12 +26,16 @@ HTML, BODY, DIV, input {
   border: 1px black solid;
 }
 
+.emoji-category.all {
+  font-size: 18px;
+}
+
 BUTTON.emoji-category {
   color: whitesmoke;
 }
 
-BUTTON.emoji-category .emoji-category-selected {
-  border: 1px hotpink solid;
+BUTTON.emoji-category.selected {
+  border: 1px whitesmoke solid;
 }
 
 INPUT.emoji-search {
@@ -50,7 +55,7 @@ INPUT.emoji-search {
   background: whitesmoke;
 }
 
-.emojis-loading {
+.emojis-nomatch {
   margin: auto;
 }
 
