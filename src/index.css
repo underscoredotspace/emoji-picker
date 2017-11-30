@@ -48,6 +48,13 @@ INPUT.emoji-search {
   width: 100%;
 }
 
+.emoji-toast {
+  font-size: 12px;
+  text-align: center;
+  background: white;
+  padding: 3px;
+}
+
 .emoji-list {
   width: 100%;
   height: 100%;
@@ -61,8 +68,23 @@ INPUT.emoji-search {
   margin: auto;
 }
 
-.emoji {
+BUTTON.emoji {
   width: 12.5%;
-  padding: 3px 5px;
-  text-align: center;
+  padding: 3px 0 0 0;
+  font-size: 18px;
+  white-space: nowrap;
+  background: whitesmoke;
+  border: 1px solid whitesmoke;
+}
+
+BUTTON.emoji:active {
+  border: 1px solid hotpink;
+}
+
+BUTTON.emoji:focus {
+  border: qpx solid lightskyblue;
+}
+
+BUTTON.emoji:hover {
+  background: rgb(209, 209, 209);
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import Clipboard from 'clipboard'
 import './index.css'
 
 class EmojiPicker extends React.Component {
@@ -10,10 +11,24 @@ class EmojiPicker extends React.Component {
       isLoaded: false,
       emojis: [],
       emojiCategory: '',
-      filterText: ''
+      filterText: '',
+      toastText: ''
     }
     this.handleFilterTextChange = this.handleFilterTextChange.bind(this)
     this.handleCategoryChange = this.handleCategoryChange.bind(this)
+    this.handleClipboardCopyEvent = this.handleClipboardCopyEvent.bind(this)
+    this.clipboard = new Clipboard('BUTTON.emoji')
+    
+    this.clipboard.on('success', this.handleClipboardCopyEvent)
+  }
+
+  handleClipboardCopyEvent(e) {
+    this.setState({toastText: `${e.text} copied to clipboard`})
+    e.clearSelection()
+    setTimeout(() => {
+      this.setState({toastText: ''})
+    }, 2000)
+
   }
 
   handleFilterTextChange(filterText) {
@@ -47,14 +62,14 @@ class EmojiPicker extends React.Component {
   }
 
   render() {
-    const {error, isLoaded, emojis, emojiCategory, filterText} = this.state
+    const {error, isLoaded, emojis, emojiCategory, filterText, toastText} = this.state
     
     if (error) {
       console.error(error.message)
       return (
         <div className='emoji-picker'>
           <div className='emoji-categories'>
-            <button className='emoji-category'>🙃</button>
+            <button className='emoji-category'><span role="img" aria-label="upside-down face emoji">🙃</span></button>
           </div>
           <div className='emoji-list'>
             <div className='emojis-nomatch'>Error</div>
@@ -75,6 +90,7 @@ class EmojiPicker extends React.Component {
         <div className='emoji-picker'>
           <EmojiTypes onCategoryChange={this.handleCategoryChange} emojiCategory={emojiCategory} />
           <EmojiSearch onFilterTextChange={this.handleFilterTextChange} filterText={filterText}/>
+          <EmojiToast toastText={toastText}/>
           <EmojiList emojiCategory={emojiCategory} filterText={filterText} emojis={emojis} />
         </div>
       )
@@ -144,6 +160,22 @@ class EmojiSearch extends React.Component {
   }
 }
 
+class EmojiToast extends React.Component {
+  render() {
+    let toastText = this.props.toastText
+
+    if (toastText !== '') {
+      return (
+        <div className={'emoji-toast'}>
+          {toastText}
+        </div>
+      )
+    } else {
+      return ('')
+    }
+  }
+}
+
 class EmojiList extends React.Component {
   render() {
     const filterText = this.props.filterText.toLowerCase()
@@ -161,9 +193,16 @@ class EmojiList extends React.Component {
           return false
       }
       if (!matches) matches = true
-      return (<div className='emoji' title={emoji.description} key={`emoji-${ndx}`}>
-        {emoji.emoji}
-      </div>)
+      return (
+        <button 
+          onClick={this.handleEmojiClick} 
+          className='emoji' 
+          title={emoji.description} 
+          key={`emoji-${ndx}`}
+          data-clipboard-text={emoji.emoji}>
+            {emoji.emoji}
+        </button>
+      )
     })
 
     if (!matches) {
