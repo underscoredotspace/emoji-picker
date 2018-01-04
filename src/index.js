@@ -40,7 +40,7 @@ class EmojiPicker extends React.Component {
   }
 
   componentDidMount() {
-    fetch('emojis.json').then(res => res.json())
+    fetch('https://cdn.rawgit.com/underscoredotspace/learn-react/db00340a/public/emojis.json').then(res => res.json())
     .then(res => res.filter(emoji => emoji.emoji)) // Remove those silly non-emojis
     .then(res => res.map(emoji => { // Merge aliases to tags for search
       emoji.tags = emoji.tags.concat(emoji.aliases)
@@ -71,18 +71,14 @@ class EmojiPicker extends React.Component {
           <div className='emoji-categories'>
             <button className='emoji-category'><span role="img" aria-label="upside-down face emoji">🙃</span></button>
           </div>
-          <div className='emoji-list'>
-            <div className='emojis-nomatch'>Error</div>
-          </div>
+          <div className='emojis-nomatch'>Error</div>
         </div>
       )
     } else if (!isLoaded) {
       return (
         <div className='emoji-picker'>
           <div className='emoji-categories'></div>
-          <div className='emoji-list'>
-            <div className='emojis-nomatch'>Loading...</div>
-          </div>
+          <div className='emojis-nomatch'>Loading...</div>
         </div>
       )
     } else {

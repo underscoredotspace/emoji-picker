@@ -3,21 +3,19 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "babel-preset-react-app": "^3.1.0",
     "clipboard": "^1.7.1",
+    "parcel-bundler": "^1.4.1",
     "react": "^16.1.1",
-    "react-dom": "^16.1.1",
-    "react-scripts": "1.0.17",
-    "serve": "^6.4.1"
+    "react-dom": "^16.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "serve": "serve -s build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url ./"
   },
-  "devDependencies": {
-    "babel-eslint": "7",
-    "eslint": "3.x"
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
   }
 }
