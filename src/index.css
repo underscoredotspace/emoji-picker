@@ -1,90 +1,95 @@
-HTML, BODY, DIV, input {
-  box-sizing: border-box; 
-}
-
 .emoji-picker {
-  display: flex;
-  flex-direction: column;
-  width: 350px;
-  height: 250px;
-  background: black;
-  padding: 5px;
+  display: grid;
+  /* grid-template-rows: 35px, 35px, auto; */
   font-family: sans-serif;
+  width: 350px;
+  height: 270px;
+  border: solid 4px black;
 }
 
 .emoji-categories {
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
-  height: 47px;
-  padding-bottom: 4px;
-}
-
-.emoji-category, .emoji-search {
-  font-size: 14px;
-  text-align: center;
   background: black;
-  border: none;
-  border-bottom: 1px black solid;
-}
-
-.emoji-category.all {
-  font-size: 18px;
+  height: 35px;
+  padding-bottom: 3px;
 }
 
 BUTTON.emoji-category {
   color: whitesmoke;
+  height: 100%;
+  width: 35px;
+  font-size: 16px;
+  white-space: nowrap;
+  background: black;
+  border: 2px solid black;
+  text-align: center;
+  padding: 3px 0 0 0;
+  outline:0;
 }
 
-BUTTON.emoji-category.selected {
+/* BUTTON.emoji-category.all {
+  font-size: 18px;
+} */
+
+.emoji-category.selected {
   background: #333;
   border: 1px whitesmoke solid;
 }
 
-INPUT.emoji-search {
-  font-size: 16px;
+.emoji-search {
   padding: 5px;
-  border-bottom: black solid 1px;
+  border-width: 1px 0;
+  border-style: solid;
+  border-color: black;
   background: white;
   width: 100%;
+  text-align: center;
+  height: 35px;
 }
 
-.emoji-toast {
+.emoji-toast.emoji {
   font-size: 12px;
   text-align: center;
-  background: white;
-  padding: 3px;
-}
-
-.emoji-list {
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  display: flex;
-  flex-wrap: wrap;
   background: whitesmoke;
+  padding: 5px 3px 1px 3px;
+  margin: 2px;
 }
 
 .emojis-nomatch {
-  margin: auto;
+  height: 100%;
+}
+
+.emoji-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
+  grid-gap: 2px;
+  overflow-y: scroll;
+  padding: 2px;
 }
 
 BUTTON.emoji {
-  width: 12.5%;
-  padding: 3px 0 0 0;
+  height: 35px;
   font-size: 18px;
   white-space: nowrap;
   background: whitesmoke;
-  border: 1px solid whitesmoke;
+  border: 2px solid whitesmoke;
+  text-align: center;
+  padding: 3px 0 0 0;
+  outline:0;
 }
 
-BUTTON.emoji:active {
-  border: 1px solid hotpink;
+::-moz-focus-inner {border:0;}
+
+BUTTON:active {
+  border: 2px solid hotpink;
 }
 
-BUTTON.emoji:focus {
-  border: qpx solid lightskyblue;
+BUTTON:focus {
+  outline: 1px solid lightskyblue;
 }
 
-BUTTON.emoji:hover {
+BUTTON:hover {
   background: rgb(209, 209, 209);
 }
