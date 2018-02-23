@@ -1,6 +1,7 @@
 .emoji-picker {
   display: grid;
-  /* grid-template-rows: 35px, 35px, auto; */
+  grid-template-rows: 35px 35px auto;
+  align-content: start;
   font-family: sans-serif;
   width: 350px;
   height: 270px;
@@ -49,12 +50,9 @@ BUTTON.emoji-category {
   height: 35px;
 }
 
-.emoji-toast.emoji {
-  font-size: 12px;
+.emoji-toast {
+  padding: 5px;
   text-align: center;
-  background: whitesmoke;
-  padding: 5px 3px 1px 3px;
-  margin: 2px;
 }
 
 .emojis-nomatch {
@@ -64,6 +62,7 @@ BUTTON.emoji-category {
 .emoji-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(35px, 1fr));
+  align-content: start;
   grid-gap: 2px;
   overflow-y: scroll;
   padding: 2px;

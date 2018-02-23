@@ -1,21 +1,21 @@
 {
-  "name": "learn-react",
-  "version": "0.1.0",
+  "name": "emoji-picker",
+  "version": "0.3.0",
+  "description": "Fake windows in HTML",
+  "repository": "https://github.com/underscoredotspace/emoji-picker",
+  "author": "Colin Tindle <ampersand@underscore.space>",
+  "main": "src/index.js",
+  "license": "CC-BY-4.0",
   "private": true,
   "dependencies": {
-    "babel-preset-react-app": "^3.1.0",
     "clipboard": "^1.7.1",
-    "parcel-bundler": "^1.4.1",
-    "react": "^16.1.1",
-    "react-dom": "^16.1.1"
+    "parcel-bundler": "^1.6.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "scripts": {
-    "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --public-url ./"
-  },
-  "babel": {
-    "presets": [
-      "react-app"
-    ]
+    "start": "parcel ./src/index.html --open",
+    "build": "parcel build ./src/index.html --public-url ./ --detailed-report",
+    "test": "echo \"No tests. Sorry\""
   }
 }
