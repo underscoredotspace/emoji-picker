@@ -28,7 +28,6 @@ class EmojiPicker extends React.Component {
     setTimeout(() => {
       this.setState({toastText: ''})
     }, 2000)
-
   }
 
   handleFilterTextChange(filterText) {
@@ -162,7 +161,7 @@ class EmojiToast extends React.Component {
 
     if (toastText !== '') {
       return (
-        <div className={'emoji-toast'}>
+        <div className='emoji-toast'>
           {toastText}
         </div>
       )
