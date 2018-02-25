@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Clipboard from 'clipboard'
 import './index.css'
+import emojisJson from '../public/emojis.json'
 
 class EmojiPicker extends React.Component {
   constructor(props) {
@@ -39,25 +40,18 @@ class EmojiPicker extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://cdn.rawgit.com/underscoredotspace/learn-react/db00340a/public/emojis.json').then(res => res.json())
-    .then(res => res.filter(emoji => emoji.emoji)) // Remove those silly non-emojis
-    .then(res => res.map(emoji => { // Merge aliases to tags for search
-      emoji.tags = emoji.tags.concat(emoji.aliases)
-      delete emoji.aliases
-      return emoji
-    }))
-    .then(res => {
-        this.setState({
-          isLoaded: true,
-          emojis: res
-        })
-      }, error => {
-        this.setState({
-          isLoaded: true,
-          error
-        })
-      }
-    )
+    const emojis = emojisJson
+      .filter(e => e.emoji)   // Remove those silly non-emojis
+      .map(emoji => {         // Merge aliases to tags for search
+        emoji.tags = emoji.tags.concat(emoji.aliases)
+        delete emoji.aliases
+        return emoji
+      })
+      
+    this.setState({
+      isLoaded: true,
+      emojis
+    })
   }
 
   render() {

@@ -1,3 +1,5 @@
+body {margin:0;}
+
 .emoji-picker {
   display: grid;
   grid-template-rows: 35px 35px auto;
@@ -30,10 +32,6 @@ BUTTON.emoji-category {
   outline:0;
 }
 
-/* BUTTON.emoji-category.all {
-  font-size: 18px;
-} */
-
 .emoji-category.selected {
   background: #333;
   border: 1px whitesmoke solid;
@@ -56,7 +54,9 @@ BUTTON.emoji-category {
 }
 
 .emojis-nomatch {
-  height: 100%;
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 80px 0;
 }
 
 .emoji-list {
